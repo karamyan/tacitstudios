@@ -18,4 +18,8 @@ Route::post("/token/create", 'AuthController@login')->name('create_token');
 
 //All secure URL's
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get("/contacts", 'ContactsController@list')->name('view_contacts');
+    Route::post("/contacts/{contactId}/note", 'ContactsController@createContactNote')->name('create_note');
+    Route::put("/contacts/note/{noteId}", 'ContactsController@updateNote')->name('update_note');
+    Route::delete("/contacts/note/{noteId}", 'ContactsController@deleteNote')->name('delete_note');
 });
