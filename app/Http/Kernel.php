@@ -22,7 +22,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\HttpsProtocol::class,
     ];
 
     /**
@@ -43,6 +42,7 @@ class Kernel extends HttpKernel
 
         'api' => [
             EnsureFrontendRequestsAreStateful::class,
+            \App\Http\Middleware\HttpsProtocol::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
