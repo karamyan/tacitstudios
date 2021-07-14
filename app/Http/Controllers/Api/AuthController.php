@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class AuthController
- *
- * @package App\Http\Controllers\Api
- */
 class AuthController extends Controller
 {
     /**
