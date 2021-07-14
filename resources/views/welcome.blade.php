@@ -21,25 +21,6 @@
                 <th scope="col">Updated date</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
         </table>
     </div>
 </div>
@@ -71,24 +52,24 @@
             success: function (data) {
                 var access_token = data.data.token
 
-                $('#contacts').DataTable({
-                    "ajax": {
-                        'url':'{{ route("view_contacts") }}',
-                        'beforeSend': function (request) {
-                            request.setRequestHeader("Authorization", 'Bearer '+access_token);
-                        },
-                        'success': function (data) {
-                            console.log(data);
-                        },
-                        "columns": [
-                            { "data": "contact_id" },
-                            { "data": "name" },
-                            { "data": "created_at" },
-                            { "data": "updated_at" }
-                        ]
+                $.ajax({
+                    type: "GET",
+                    url: '{{ route("view_contacts") }}',
+                    headers: {
+                        "Authorization": 'Bearer ' + access_token
                     },
+                    success: function (data, textStatus, jqXHR) {
+                        var table = $('#contacts').DataTable({
+                            data: data,
+                            "columns": [
+                                {"data": "contact_id"},
+                                {"data": "name"},
+                                {"data": "created_at"},
+                                {"data": "updated_at"}
+                            ]
+                        });
+                    }
                 });
-
             }
         });
     });

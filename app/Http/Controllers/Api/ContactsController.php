@@ -47,7 +47,7 @@ class ContactsController extends CRUDController
                 'notes' => $request->get('notes')
             ],
             [
-                'contact_id' => 'integer|exists:mysql.karamyan_task.contacts',
+                'contact_id' => 'integer|exists:pgsql.d3vsrcidil423p.contacts',
                 'notes' => 'required|string'
             ]
         );
@@ -87,7 +87,7 @@ class ContactsController extends CRUDController
                 'notes' => $request->get('notes')
             ],
             [
-                'note_id' => 'integer|exists:mysql.karamyan_task.contact_notes',
+                'note_id' => 'integer|exists:pgsql.d3vsrcidil423p.contact_notes',
                 'notes' => 'required|string'
             ],
         );
