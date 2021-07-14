@@ -47,7 +47,7 @@ class ContactsController extends CRUDController
                 'notes' => $request->get('notes')
             ],
             [
-                'contact_id' => 'integer|exists:pgsql.contacts',
+                'contact_id' => 'integer|exists:mysql.contacts',
                 'notes' => 'required|string'
             ]
         );
@@ -87,7 +87,7 @@ class ContactsController extends CRUDController
                 'notes' => $request->get('notes')
             ],
             [
-                'note_id' => 'integer|exists:pgsql.contact_notes',
+                'note_id' => 'integer|exists:mysql.contact_notes',
                 'notes' => 'required|string'
             ],
         );
