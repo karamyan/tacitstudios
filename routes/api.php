@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post("/token/create", 'AuthController@login')->name('create_token');
+
+//All secure URL's
+Route::group(['middleware' => 'auth:sanctum'], function () {
 });
